@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: movie_integration
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: julia98
+Implementation-Vendor-Id: com.edu.nju
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_161
+Main-Class: ${start-class}
+
