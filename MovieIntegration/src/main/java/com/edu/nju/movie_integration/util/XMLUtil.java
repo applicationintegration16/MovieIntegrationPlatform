@@ -1,5 +1,6 @@
 package com.edu.nju.movie_integration.util;
 
+import net.sf.json.xml.XMLSerializer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -9,7 +10,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
+import java.io.*;
 import java.util.Map;
 
 /**
@@ -66,5 +67,29 @@ public class XMLUtil {
             e.printStackTrace();
         }
     }
+
+    /**
+     * xml转json字符串
+     * @param filePath 文件路径
+     * @return json字符串
+     */
+    public static String xml2json(String filePath) {
+        File file=new File(filePath);
+        String content="";
+        try {
+            FileReader fileReader=new FileReader(file);
+            BufferedReader reader=new BufferedReader(fileReader);
+            String temp;
+            while((temp=reader.readLine())!=null){
+                content+=temp;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        XMLSerializer xmlSerializer = new XMLSerializer();
+        return xmlSerializer.read(content).toString();
+    }
+
+
 
 }
