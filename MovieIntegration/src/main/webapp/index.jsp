@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/common.min.css" />
     <link rel="stylesheet" href="css/index.min.css" />
 </head>
-<body>
+<body onload="getMovie()">
 <div class="layout">
     <!--===========layout-header================-->
     <div class="layout-header am-hide-sm-only">
@@ -277,8 +277,78 @@
                 </p>
             </div>
 
+            <script>
+                function getMovie() {
+                    var movie;
+                    $.ajax({
+                        url: "/movie",
+                        method: "get",
+                        async: false,
+                        success: function(res) {
+                            movie = JSON.parse(res.data);
+                            var time = movie/4;
+                            for(var i = 0;i<movie.length;i++) {
+                                if(i !== (time+1)) {
+                                    document.getElementById("movie").innerHTML += "<div class=\"am-g\">\n" +
+                                        "                    <div class=\"am-u-md-3\">\n" +
+                                        "                        <div class=\"features_item\">\n" +
+                                        "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
+                                        "                            <h3 class=\"features_item--title\">" + movie.get(i*4).name + "</h3>\n" +
+                                        "                            <p class=\"features_item--text\">\n" +
+                                        "                                " + movie.get(i*4).description +"\n" +
+                                        "                            </p>\n" +
+                                        "                        </div>\n" +
+                                        "                    </div>\n" +
+                                        "                    <div class=\"am-u-md-3\">\n" +
+                                        "                        <div class=\"features_item\">\n" +
+                                        "                            <img src=\"images/index/f02.jpg\" alt=\"\">\n" +
+                                        "                            <h3 class=\"features_item--title\">" + movie.get(i*4+1).name + "</h3>\n" +
+                                        "                            <p class=\"features_item--text\">\n" +
+                                        "                                " + movie.get(i*4+1).description +"\n" +
+                                        "                            </p>\n" +
+                                        "                        </div>\n" +
+                                        "                    </div>\n" +
+                                        "                    <div class=\"am-u-md-3\">\n" +
+                                        "                        <div class=\"features_item\">\n" +
+                                        "                            <img src=\"images/index/f03.jpg\" alt=\"\">\n" +
+                                        "                            <h3 class=\"features_item--title\">" + movie.get(i*4+2).name + "</h3>\n" +
+                                        "                            <p class=\"features_item--text\">\n" +
+                                        "                                " + movie.get(i*4+2).description +"\n" +
+                                        "                        </div>\n" +
+                                        "                    </div>\n" +
+                                        "                    <div class=\"am-u-md-3\">\n" +
+                                        "                        <div class=\"features_item\">\n" +
+                                        "                            <img src=\"images/index/f04.jpg\" alt=\"\">\n" +
+                                        "                            <h3 class=\"features_item--title\">" + movie.get(i*4+3).name + "</h3>\n" +
+                                        "                            <p class=\"features_item--text\">\n" +
+                                        "                                " + movie.get(i*4+3).description +"\n" +
+                                        "                            </p>\n" +
+                                        "                        </div>\n" +
+                                        "                    </div>\n" +
+                                        "                </div>";
+                                } else {
+                                    var num = movie - time*4;
+                                    document.getElementById("movie").innerHTML += "<div class=\"am-g\">";
+                                    for(var j = 0;j<num;j++) {
+                                        document.getElementById("movie").innerHTML += "<div class=\"am-u-md-3\">\n" +
+                                            "                        <div class=\"features_item\">\n" +
+                                            "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
+                                            "                            <h3 class=\"features_item--title\">" + movie.get(time*4+j).name + "</h3>\n" +
+                                            "                            <p class=\"features_item--text\">\n" +
+                                            "                                " + movie.get(time*4+j).description +"\n" +
+                                            "                            </p>\n" +
+                                            "                        </div>\n" +
+                                            "                    </div>";
+                                    }
+                                }
+                            }
+                        }
+                    })
+                }
+            </script>
+
             <!--index-container start-->
-            <div class="index-container">
+            <div class="index-container" id="movie">
                 <div class="am-g">
                     <div class="am-u-md-3">
                         <div class="features_item">
@@ -317,9 +387,6 @@
                     </div>
                 </div>
 
-                <div class="index-more">
-                    <button type="button" class="am-btn am-btn-secondary">MORE&nbsp;&nbsp;>></button>
-                </div>
             </div>
             <!--index-container end-->
         </div>
@@ -327,99 +394,35 @@
 
 </div>
 
-<!--promo_detailed start-->
-<div class="promo_detailed">
-    <div class="promo_detailed-container" >
-        <div class="container">
-            <div class="am-g">
-                <div class="am-u-md-6">
-                    <ul class="promo_detailed--list">
-                        <li class="promo_detailed--list_item">
-                <span class="promo_detailed--list_item_icon">
-                  <i class="am-icon-diamond"></i>
-                </span>
-                            <dl>
-                                <dt>多层次的用户管理功能</dt>
-                                <dd>
-                                    支持用户的添加和导入，与AD可以进行紧密的整合，实时同步最新的用户信息，从而方便对用户进行管理。
-                                </dd>
-                            </dl>
-                        </li>
-                        <li class="promo_detailed--list_item">
-                <span class="promo_detailed--list_item_icon">
-                  <i class="am-icon-dollar" style="margin-left: 15px;"></i>
-                </span>
-                            <dl>
-                                <dt>丰富的日志报表系统</dt>
-                                <dd>
-                                    提供实时监控平台，日志和报告系统，帮助管理员对系统的整体情况有全面的了解。
-                                </dd>
-                            </dl>
-                        </li>
-                        <li class="promo_detailed--list_item">
-                <span class="promo_detailed--list_item_icon">
-                  <i class="am-icon-bank" style="margin-left: 10px;"></i>
-                </span>
-                            <dl>
-                                <dt>丰富的应用程序管理</dt>
-                                <dd>
-                                    支持在线应用、适配应用、本地应用等多种应用类型。使用户可以最便捷的获取企业的各种应用。
-                                </dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="am-u-md-6">
-                    <div class="promo_detailed--cta">
-                        <%--<div class="promo_detailed--cta_wrap">--%>
-                            <%--<div class="promo_detailed--cta_text">--%>
-                                <%--提供设备的远程锁定，擦除等功能。在设备出现遗失的情况下可以最大程度的保护企业的信息不被泄露。--%>
-                            <%--</div>--%>
-                            <%--<div class="promo_detailed--cta_footer">--%>
-                                <%--<button type="button" class="am-btn am-btn-danger">MORE&nbsp;&nbsp;>></button>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <div class="promo_detailed-img am-show-sm-only" style="background-image: url('images/index/promo_detailed_bg.jpg');"></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="promo_detailed-img am-hide-sm-only" style="background-image: url('images/index/promo_detailed_bg.jpg');"></div>
-</div>
-<!--promo_detailed end-->
-
-
 
 <!--===========layout-footer================-->
-<div class="layout-footer">
-    <div class="footer">
-        <div style="background-color:#383d61" class="footer--bg"></div>
-        <div class="footer--inner">
-            <div class="container">
-                <div class="footer_main">
-                    <div class="am-g">
-                        <%--<div class="am-u-md-3 ">--%>
-                            <%--<div class="footer_main--column">--%>
-                                <%--<strong class="footer_main--column_title">关于我们</strong>--%>
-                                <%--<div class="footer_about">--%>
-                                    <%--<p class="footer_about--text">--%>
-                                        <%--云适配(AllMobilize Inc.) 是全球领先的HTML5企业移动化解决方案供应商，由前微软美国总部IE浏览器核心研发团队成员及移动互联网行业专家在美国西雅图创立.--%>
-                                    <%--</p>--%>
-                                    <%--<p class="footer_about--text">--%>
-                                        <%--云适配跨屏云也成功应用于超过30万家企业网站，包括微软、联想等世界500强企业--%>
-                                    <%--</p>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<%--<div class="layout-footer">--%>
+    <%--<div class="footer">--%>
+        <%--<div style="background-color:#383d61" class="footer--bg"></div>--%>
+        <%--<div class="footer--inner">--%>
+            <%--<div class="container">--%>
+                <%--<div class="footer_main">--%>
+                    <%--<div class="am-g">--%>
+                        <%--&lt;%&ndash;<div class="am-u-md-3 ">&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;<div class="footer_main--column">&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<strong class="footer_main--column_title">关于我们</strong>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<div class="footer_about">&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;<p class="footer_about--text">&ndash;%&gt;--%>
+                                        <%--&lt;%&ndash;云适配(AllMobilize Inc.) 是全球领先的HTML5企业移动化解决方案供应商，由前微软美国总部IE浏览器核心研发团队成员及移动互联网行业专家在美国西雅图创立.&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;</p>&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;<p class="footer_about--text">&ndash;%&gt;--%>
+                                        <%--&lt;%&ndash;云适配跨屏云也成功应用于超过30万家企业网站，包括微软、联想等世界500强企业&ndash;%&gt;--%>
+                                    <%--&lt;%&ndash;</p>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
+
 <script src="js/jquery-2.1.0.js" charset="utf-8"></script>
 <script src="js/amazeui.js" charset="utf-8"></script>
 <script src="js/common.js" charset="utf-8"></script>
