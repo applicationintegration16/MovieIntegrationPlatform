@@ -1,12 +1,11 @@
 package com.edu.nju.movie_integration.util;
 
 import com.edu.nju.movie_integration.domain.Movie;
-import com.google.gson.*;
-import net.sf.json.JSON;
-import net.sf.json.JSONObject;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 

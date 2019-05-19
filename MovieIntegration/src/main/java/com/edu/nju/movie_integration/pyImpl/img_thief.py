@@ -8,7 +8,7 @@ def get_douban_img(url):
         url_t = url.split('"')[1]
         print(url_t)
         res = requests.get(url_t)
-        res = requests.get("https://movie.douban.com/subject/1292052/")
+       # res = requests.get("https://movie.douban.com/subject/1292052/")
         print('*****1')
         soup = BeautifulSoup(res.text, 'html.parser')
         print('*****2')
