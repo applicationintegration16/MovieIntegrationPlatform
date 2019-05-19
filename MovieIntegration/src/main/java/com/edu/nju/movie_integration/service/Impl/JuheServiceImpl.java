@@ -170,7 +170,14 @@ public class JuheServiceImpl implements JuheService{
                     Movie movie = getMovieById(movieId);
                     movies.add(movie);
                 }
+                JSONArray object1 = JSONArray.fromObject(movies);
+                String jsonString = object1.toString();
+                String path = "src/main/java/com/edu/nju/movie_integration/pyImpl/juhe.json";
+                BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+                bw.write(jsonString);
+                bw.close();
                 System.out.println(object.get("result"));
+
             }else{
                 System.out.println(object.get("error_code")+":"+object.get("reason"));
             }
