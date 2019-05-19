@@ -38,11 +38,11 @@ public class PythonRunnerUtil {
         }
     }
 
-    public static void main(String[] args){
-         String path = "src/main/java/com/edu/nju/movie_integration/pyImpl/douban_film.py";
-         String[] pArgs = {};
-         run(path, pArgs);
-
-    }
+//    public static void main(String[] args){
+//         String path = "src/main/java/com/edu/nju/movie_integration/pyImpl/douban_film.py";
+//         String[] pArgs = {};
+//         run(path, pArgs);
+//
+//    }
 
 }

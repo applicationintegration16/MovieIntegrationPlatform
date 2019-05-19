@@ -22,5 +22,3 @@ class JsonUtil:
         print(len(obj_dict))
 
 
-
-JsonUtil.load_obj('1.json')

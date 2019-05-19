@@ -1,14 +1,24 @@
 import requests
-import urllib
 from bs4 import BeautifulSoup
 
-class ImgThief:
-    @staticmethod
-    def get_douban_img(url):
-        res = requests.get(url)
+from sys import argv
+
+
+def get_douban_img(url):
+        url_t = url.split('"')[1]
+        print(url_t)
+        res = requests.get(url_t)
+        res = requests.get("https://movie.douban.com/subject/1292052/")
+        print('*****1')
         soup = BeautifulSoup(res.text, 'html.parser')
-        # print(soup.select('img')[0])
-        return soup.select('img')[0]
+        print('*****2')
+        print(soup.select('img')[0])
+        pic_str_list = str(soup.select('img')[0]).split('src="')[1].split('" title')
+        print(pic_str_list[0])
+        file = open('src/main/resources/dataset/tmp.txt', 'w')
+        file.write(pic_str_list[0])
+        file.close()
 
+print(argv[1])
 
-ImgThief.get_douban_img('https://movie.douban.com/subject/1295644/')
+get_douban_img(argv[1])

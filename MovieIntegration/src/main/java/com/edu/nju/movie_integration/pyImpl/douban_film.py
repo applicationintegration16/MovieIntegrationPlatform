@@ -18,7 +18,8 @@ def get_top_film():
             print(movie)
             movie_str = json.dumps(movie)
             movie_list_str += movie_str + '\n'
-        JsonUtil.write_file('1.json', movie_list_str)
+
+        JsonUtil.write_file('src/main/resources/dataset/douban.json', movie_list_str)
 
         sleep(0.3)
 
