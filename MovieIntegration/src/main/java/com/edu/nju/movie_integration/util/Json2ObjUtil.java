@@ -4,6 +4,7 @@ import com.edu.nju.movie_integration.domain.Movie;
 import com.google.gson.*;
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
+import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.List;
  * @Date: 2019-05-19 12:33
  * @Version 1.0
  */
+@Component
 public class Json2ObjUtil {
     private final static String DOUBAN_DATA_PATH = "src/main/resources/dataset/douban.json";
 
