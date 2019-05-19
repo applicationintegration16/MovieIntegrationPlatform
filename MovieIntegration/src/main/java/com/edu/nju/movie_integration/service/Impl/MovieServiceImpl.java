@@ -1,7 +1,9 @@
 package com.edu.nju.movie_integration.service.Impl;
 
 import com.edu.nju.movie_integration.domain.Movie;
+import com.edu.nju.movie_integration.service.JuheService;
 import com.edu.nju.movie_integration.service.MovieService;
+import com.edu.nju.movie_integration.util.Json2ObjUtil;
 import com.edu.nju.movie_integration.util.XMLUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,12 +23,16 @@ import java.util.Map;
 public class MovieServiceImpl implements MovieService{
     @Autowired
     XMLUtil xmlUtil;
+    @Autowired
+    Json2ObjUtil json2ObjUtil;
+    @Autowired
+    JuheService juheService;
 
     @Override
     public List<Movie> getMovie() {
         //TODO: update the empty list
-        List<Movie> juhe=new ArrayList<>();
-        List<Movie> douban=new ArrayList<>();
+        List<Movie> juhe=juheService.getTodayMovie();
+        List<Movie> douban=json2ObjUtil.listMovieFromDouban();
         List<Movie> sum=new ArrayList<>();
         sum.addAll(juhe);
         sum.addAll(douban);
