@@ -24,6 +24,7 @@ public class MovieServiceImpl implements MovieService{
 
     @Override
     public List<Movie> getMovie() {
+        //TODO: update the empty list
         List<Movie> juhe=new ArrayList<>();
         List<Movie> douban=new ArrayList<>();
         List<Movie> sum=new ArrayList<>();

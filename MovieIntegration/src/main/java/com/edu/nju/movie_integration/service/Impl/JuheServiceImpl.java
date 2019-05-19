@@ -264,6 +264,7 @@ public class JuheServiceImpl implements JuheService{
                     out.writeBytes(urlencode(params));
                 } catch (Exception e) {
                     // TODO: handle exception
+                    e.printStackTrace();
                 }
             }
             InputStream is = conn.getInputStream();
