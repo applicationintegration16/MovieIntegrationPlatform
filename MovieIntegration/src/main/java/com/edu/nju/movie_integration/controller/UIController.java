@@ -1,6 +1,8 @@
 package com.edu.nju.movie_integration.controller;
 
 import com.edu.nju.movie_integration.domain.Movie;
+import com.edu.nju.movie_integration.service.JuheService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,6 +11,9 @@ import java.util.List;
 
 @RestController
 public class UIController {
+    @Autowired
+    private JuheService juheService;
+
     @RequestMapping("/movie")
     public List<Movie> getMovieList() {
         Movie test1 = new Movie();
@@ -27,5 +32,10 @@ public class UIController {
         list.add(test1);
         list.add(test2);
         return list;
+    }
+
+    @RequestMapping("/Todaymovie")
+    public List<Movie> getTodayMovie() {
+        return juheService.getTodayMovie();
     }
 }

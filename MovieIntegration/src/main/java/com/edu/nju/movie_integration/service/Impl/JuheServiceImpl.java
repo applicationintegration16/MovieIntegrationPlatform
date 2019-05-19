@@ -5,6 +5,7 @@ import com.edu.nju.movie_integration.domain.Movie;
 import com.edu.nju.movie_integration.service.JuheService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -21,6 +22,7 @@ import java.util.Map;
  * @Version 1.0
  */
 
+@Service
 public class JuheServiceImpl implements JuheService{
 
     public static final String DEF_CHATSET = "UTF-8";
@@ -100,6 +102,7 @@ public class JuheServiceImpl implements JuheService{
                     JSONObject current = (JSONObject) moviesList.get(i);
                     int id = current.getInt("movieId");
                     String name = current.getString("movieName");
+                    String pic_url = current.getString("pic_url");
                     JSONArray tickets = current.getJSONArray("broadcast");
                     JSONObject ticket = (JSONObject)tickets.get(0);
                     double price = ticket.getDouble("price");
@@ -107,6 +110,7 @@ public class JuheServiceImpl implements JuheService{
                     movie.setCinemaAddress(address);
                     movie.setId(id);
                     movie.setName(name);
+
                     movie.setPrice(price);
                     movies.add(movie);
                 }
@@ -147,6 +151,48 @@ public class JuheServiceImpl implements JuheService{
         return re;
     }
 
+    public List<Movie> getTodayMovie(){
+        String result =null;
+        String url ="http://v.juhe.cn/movie/movies.today";//请求接口地址
+        Map params = new HashMap();//请求参数
+        params.put("cityid","14");//城市ID
+        params.put("key",APPKEY);//应用APPKEY(应用详细页查询)
+        params.put("dtype","");//返回数据的格式,xml/json，默认json
+        List<Movie> movies = new ArrayList<>();
+        try {
+            result =net(url, params, "GET");
+            JSONObject object = JSONObject.fromObject(result);
+            if(object.getInt("error_code")==0){
+                JSONArray movieResult = object.getJSONArray("result");
+                for (int i = 0 ; i < movieResult.size() ; i ++) {
+                    JSONObject current = (JSONObject) movieResult.get(i);
+                    int movieId = current.getInt("movieId");
+                    String movieName = current.getString("movieName");
+                    String pic_url = current.getString("pic_url");
+                    Movie movie = new Movie();
+                    movie.setId(movieId);
+                    movie.setName(movieName);
+                    movie.setPic_url(pic_url);
+                    movies.add(movie);
+                }
+                System.out.println(object.get("result"));
+            }else{
+                System.out.println(object.get("error_code")+":"+object.get("reason"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+    public static void main(String[] args) {
+//        List<Movie> movies = getTodayMovie();
+//        for (int i = 0 ; i < movies.size() ; i ++)
+//            System.out.println(movies.get(i).getName());
+//        getRequest4(967);
+//        getRequest5("南京");
+//             getRequest6();
+
+    }
     /**
      *
      * @param strUrl 请求地址
