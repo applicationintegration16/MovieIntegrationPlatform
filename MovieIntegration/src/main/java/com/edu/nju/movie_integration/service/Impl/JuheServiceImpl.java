@@ -152,43 +152,50 @@ public class JuheServiceImpl implements JuheService{
     }
 
     public List<Movie> getTodayMovie(){
-        String result =null;
-        String url ="http://v.juhe.cn/movie/movies.today";//请求接口地址
-        Map params = new HashMap();//请求参数
-        params.put("cityid","14");//城市ID
-        params.put("key",APPKEY);//应用APPKEY(应用详细页查询)
-        params.put("dtype","");//返回数据的格式,xml/json，默认json
         List<Movie> movies = new ArrayList<>();
         try {
-            result =net(url, params, "GET");
-            JSONObject object = JSONObject.fromObject(result);
-            if(object.getInt("error_code")==0){
-                JSONArray movieResult = object.getJSONArray("result");
-                for (int i = 0 ; i < movieResult.size() ; i ++) {
-                    JSONObject current = (JSONObject) movieResult.get(i);
-                    int movieId = current.getInt("movieId");
-                    Movie movie = getMovieById(movieId);
-                    movies.add(movie);
-                }
-                JSONArray object1 = JSONArray.fromObject(movies);
-                String jsonString = object1.toString();
-                String path = "src/main/java/com/edu/nju/movie_integration/pyImpl/juhe.json";
-                BufferedWriter bw = new BufferedWriter(new FileWriter(path));
-                bw.write(jsonString);
-                bw.close();
-                System.out.println(object.get("result"));
-
-            }else{
-                System.out.println(object.get("error_code")+":"+object.get("reason"));
-            }
-        } catch (Exception e) {
+            movies = getMovies();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return movies;
+//        String result =null;
+//        String url ="http://v.juhe.cn/movie/movies.today";//请求接口地址
+//        Map params = new HashMap();//请求参数
+//        params.put("cityid","14");//城市ID
+//        params.put("key",APPKEY);//应用APPKEY(应用详细页查询)
+//        params.put("dtype","");//返回数据的格式,xml/json，默认json
+//        try {
+//            result =net(url, params, "GET");
+//            JSONObject object = JSONObject.fromObject(result);
+//            if(object.getInt("error_code")==0){
+//                JSONArray movieResult = object.getJSONArray("result");
+//                for (int i = 0 ; i < movieResult.size() ; i ++) {
+//                    JSONObject current = (JSONObject) movieResult.get(i);
+//                    int movieId = current.getInt("movieId");
+//                    Movie movie = getMovieById(movieId);
+//                    movies.add(movie);
+//                }
+//                JSONArray object1 = JSONArray.fromObject(movies);
+//                String jsonString = object1.toString();
+//                String path = "src/main/java/com/edu/nju/movie_integration/pyImpl/juhe.json";
+//                BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+//                bw.write(jsonString);
+//                bw.close();
+//                System.out.println(object.get("result"));
+//
+//            }else{
+//                System.out.println(object.get("error_code")+":"+object.get("reason"));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return movies;
     }
     public static void main(String[] args) throws IOException {
         JuheServiceImpl juheService = new JuheServiceImpl();
-        juheService.getMovies();
+        List<Movie> movies = juheService.getTodayMovie();
+        System.out.println(movies.size());
 //        List<Movie> movies = getTodayMovie();
 //        for (int i = 0 ; i < movies.size() ; i ++)
 //            System.out.println(movies.get(i).getName());
