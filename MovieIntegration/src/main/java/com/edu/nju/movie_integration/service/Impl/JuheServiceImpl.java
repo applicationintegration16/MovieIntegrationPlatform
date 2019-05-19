@@ -158,6 +158,7 @@ public class JuheServiceImpl implements JuheService{
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println(movies.size());
         return movies;
 //        String result =null;
 //        String url ="http://v.juhe.cn/movie/movies.today";//请求接口地址
@@ -242,7 +243,7 @@ public class JuheServiceImpl implements JuheService{
     }
 
     public List<Movie> getMovies() throws IOException {
-        String path = "src/main/java/com/edu/nju/movie_integration/pyImpl/juhe.json";
+        String path = "src/main/java/com/edu/nju/movie_integration/pyImpl/juhe.txt";
         BufferedReader br = new BufferedReader(new FileReader(path));
        String jsonString = br.readLine();
        List<Movie> movies = JSONArray.toList(JSONArray.fromObject(jsonString) , Movie.class);
