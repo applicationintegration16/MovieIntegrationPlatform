@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>企业网站模板</title>
+    <title>电影集成平台</title>
     <link rel="stylesheet" href="css/amazeui.css" />
     <link rel="stylesheet" href="css/common.min.css" />
     <link rel="stylesheet" href="css/index.min.css" />
