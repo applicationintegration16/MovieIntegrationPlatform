@@ -34,8 +34,8 @@ public class MovieServiceImpl implements MovieService{
         List<Movie> juhe=juheService.getTodayMovie();
         List<Movie> douban=json2ObjUtil.listMovieFromDouban();
         List<Movie> sum=new ArrayList<>();
-        sum.addAll(juhe);
         sum.addAll(douban);
+        sum.addAll(juhe);
         saveMovie(sum);
         return sum;
     }

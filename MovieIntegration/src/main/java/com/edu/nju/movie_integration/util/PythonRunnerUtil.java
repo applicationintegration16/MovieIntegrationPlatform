@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
  *  PythonRunnerUtil call python implement if necessary
  */
 public class PythonRunnerUtil {
-    private static final String COMMAND = "python3";
+    private static final String COMMAND = "python";
 
     public static void run(String pythonFilePath, String[] params){
         String[] args = new String[2 + params.length];
