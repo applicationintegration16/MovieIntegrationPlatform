@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A testing API for frontend.
+ * Please replace it for complete function.
+ */
 @RestController
 public class UIController {
     @RequestMapping("/movie")
@@ -18,10 +22,10 @@ public class UIController {
         test1.setDescription(descriptions1);
 
         Movie test2 = new Movie();
-        test1.setName("2");
+        test2.setName("2");
         List<String> descriptions2 = new ArrayList<>();
         descriptions2.add("test321");
-        test1.setDescription(descriptions2);
+        test2.setDescription(descriptions2);
 
         List<Movie> list = new ArrayList<>();
         list.add(test1);

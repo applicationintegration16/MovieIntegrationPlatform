@@ -145,7 +145,7 @@
                                         <div class="am-u-md-10 am-u-sm-centered">
                                             <h1 class="slide_simple--title">电影</h1>
                                             <p class="slide_simple--text am-text-left">
-                                                电影电影电影电影电影电影电影电影电影电影电影电影
+                                                本平台是一个电影集成平台，为您提供各大平台的电影数据。
                                             </p>
                                             <div class="slide_simple--buttons">
                                                 <button type="button" class="am-btn am-btn-danger">了解更多</button>
@@ -164,7 +164,7 @@
                                         <div class="am-u-md-10 am-u-sm-centered">
                                             <h1 class="slide_simple--title">电影</h1>
                                             <p class="slide_simple--text am-text-left">
-                                                电影电影电影电影电影电影电影电影电影电影电影电影
+                                                本平台是一个电影集成平台，为您提供各大平台的电影数据。
                                             </p>
                                             <div class="slide_simple--buttons">
                                                 <button type="button" class="am-btn am-btn-danger">了解更多</button>
@@ -183,7 +183,7 @@
                                         <div class="am-u-md-10 am-u-sm-centered">
                                             <h1 class="slide_simple--title">电影</h1>
                                             <p class="slide_simple--text am-text-left">
-                                                电影电影电影电影电影电影电影电影电影电影电影电影
+                                                本平台是一个电影集成平台，为您提供各大平台的电影数据。
                                             </p>
                                             <div class="slide_simple--buttons">
                                                 <button type="button" class="am-btn am-btn-danger">了解更多</button>
@@ -202,7 +202,7 @@
                                         <div class="am-u-md-10 am-u-sm-centered">
                                             <h1 class="slide_simple--title">电影</h1>
                                             <p class="slide_simple--text am-text-left">
-                                                电影电影电影电影电影电影电影电影电影电影电影电影
+                                                本平台是一个电影集成平台，为您提供各大平台的电影数据。
                                             </p>
                                             <div class="slide_simple--buttons">
                                                 <button type="button" class="am-btn am-btn-danger">了解更多</button>
@@ -223,7 +223,7 @@
                             </div>
                             <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
                                 <strong class="promo_slider_nav--item_title">电影1</strong>
-                                <p class="promo_slider_nav--item_description">电影电影电影</p>
+                                <%--<p class="promo_slider_nav--item_description"></p>--%>
                             </div>
                         </a>
                     </li>
@@ -234,7 +234,7 @@
                             </div>
                             <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
                                 <strong class="promo_slider_nav--item_title">电影2</strong>
-                                <p class="promo_slider_nav--item_description">电影电影电影</p>
+                                <%--<p class="promo_slider_nav--item_description">本平台是一个电影集成平台，为您提供各大平台的电影数据。</p>--%>
                             </div>
                         </a>
                     </li>
@@ -245,7 +245,7 @@
                             </div>
                             <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
                                 <strong class="promo_slider_nav--item_title">电影3</strong>
-                                <p class="promo_slider_nav--item_description">电影电影电影</p>
+                                <%--<p class="promo_slider_nav--item_description">本平台是一个电影集成平台，为您提供各大平台的电影数据。</p>--%>
                             </div>
                         </a>
                     </li>
@@ -256,7 +256,7 @@
                             </div>
                             <div class="school-item-right am-u-md-9 am-u-sm-9 am-text-left">
                                 <strong class="promo_slider_nav--item_title">电影4</strong>
-                                <p class="promo_slider_nav--item_description">电影电影电影</p>
+                                <%--<p class="promo_slider_nav--item_description">本平台是一个电影集成平台，为您提供各大平台的电影数据。</p>--%>
                             </div>
                         </a>
                     </li>
@@ -272,8 +272,8 @@
             <div class="section--header">
                 <h2 class="section--title">电影集成平台</h2>
                 <p class="section--description">
-                    电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影
-                    <br>电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影电影
+                    本平台是一个电影集成平台，为您提供各大平台的电影数据。
+                    <br>以下是本平台所收集到的电影信息，感谢您的使用！
                 </p>
             </div>
 
@@ -285,60 +285,82 @@
                         method: "get",
                         async: false,
                         success: function(res) {
-                            movie = JSON.parse(res.data);
-                            var time = movie/4;
-                            for(var i = 0;i<movie.length;i++) {
-                                if(i !== (time+1)) {
-                                    document.getElementById("movie").innerHTML += "<div class=\"am-g\">\n" +
-                                        "                    <div class=\"am-u-md-3\">\n" +
+                            var movie = res;
+                            if(movie.length <= 4) {
+                                document.getElementById("movie").innerHTML += "<div class=\"am-g\">";
+                                for (var t = 0; t < movie.length; t++) {
+                                    // alert(movie[t].name);
+                                    document.getElementById("movie").innerHTML += "<div class=\"am-u-md-3\">\n" +
                                         "                        <div class=\"features_item\">\n" +
                                         "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
-                                        "                            <h3 class=\"features_item--title\">" + movie.get(i*4).name + "</h3>\n" +
+                                        "                            <h3 class=\"features_item--title\">" + movie[t].name + "</h3>\n" +
+                                        "                            <h3 class=\"features_item--title\">评分 " + movie[t].rating + "</h3>" +
                                         "                            <p class=\"features_item--text\">\n" +
-                                        "                                " + movie.get(i*4).description +"\n" +
+                                        "                                " + movie[t].description.toString() + "\n" +
                                         "                            </p>\n" +
                                         "                        </div>\n" +
-                                        "                    </div>\n" +
-                                        "                    <div class=\"am-u-md-3\">\n" +
-                                        "                        <div class=\"features_item\">\n" +
-                                        "                            <img src=\"images/index/f02.jpg\" alt=\"\">\n" +
-                                        "                            <h3 class=\"features_item--title\">" + movie.get(i*4+1).name + "</h3>\n" +
-                                        "                            <p class=\"features_item--text\">\n" +
-                                        "                                " + movie.get(i*4+1).description +"\n" +
-                                        "                            </p>\n" +
-                                        "                        </div>\n" +
-                                        "                    </div>\n" +
-                                        "                    <div class=\"am-u-md-3\">\n" +
-                                        "                        <div class=\"features_item\">\n" +
-                                        "                            <img src=\"images/index/f03.jpg\" alt=\"\">\n" +
-                                        "                            <h3 class=\"features_item--title\">" + movie.get(i*4+2).name + "</h3>\n" +
-                                        "                            <p class=\"features_item--text\">\n" +
-                                        "                                " + movie.get(i*4+2).description +"\n" +
-                                        "                        </div>\n" +
-                                        "                    </div>\n" +
-                                        "                    <div class=\"am-u-md-3\">\n" +
-                                        "                        <div class=\"features_item\">\n" +
-                                        "                            <img src=\"images/index/f04.jpg\" alt=\"\">\n" +
-                                        "                            <h3 class=\"features_item--title\">" + movie.get(i*4+3).name + "</h3>\n" +
-                                        "                            <p class=\"features_item--text\">\n" +
-                                        "                                " + movie.get(i*4+3).description +"\n" +
-                                        "                            </p>\n" +
-                                        "                        </div>\n" +
-                                        "                    </div>\n" +
-                                        "                </div>";
-                                } else {
-                                    var num = movie - time*4;
-                                    document.getElementById("movie").innerHTML += "<div class=\"am-g\">";
-                                    for(var j = 0;j<num;j++) {
-                                        document.getElementById("movie").innerHTML += "<div class=\"am-u-md-3\">\n" +
+                                        "                    </div>";
+                                }
+                            } else {
+                                var time = movie.length / 4;
+                                for (var i = 0; i < movie.length; i++) {
+                                    if (i !== (time + 1)) {
+                                        document.getElementById("movie").innerHTML += "<div class=\"am-g\">\n" +
+                                            "                    <div class=\"am-u-md-3\">\n" +
                                             "                        <div class=\"features_item\">\n" +
                                             "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
-                                            "                            <h3 class=\"features_item--title\">" + movie.get(time*4+j).name + "</h3>\n" +
+                                            "                            <h3 class=\"features_item--title\">" + movie[i * 4].name + "</h3>\n" +
+                                            "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4].rating + "</h3>" +
                                             "                            <p class=\"features_item--text\">\n" +
-                                            "                                " + movie.get(time*4+j).description +"\n" +
+                                            "                                " + movie[i * 4].description + "\n" +
                                             "                            </p>\n" +
                                             "                        </div>\n" +
-                                            "                    </div>";
+                                            "                    </div>\n" +
+                                            "                    <div class=\"am-u-md-3\">\n" +
+                                            "                        <div class=\"features_item\">\n" +
+                                            "                            <img src=\"images/index/f02.jpg\" alt=\"\">\n" +
+                                            "                            <h3 class=\"features_item--title\">" + movie[i * 4 + 1].name + "</h3>\n" +
+                                            "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4 + 1].rating + "</h3>" +
+                                            "                            <p class=\"features_item--text\">\n" +
+                                            "                                " + movie[i * 4 + 1].description + "\n" +
+                                            "                            </p>\n" +
+                                            "                        </div>\n" +
+                                            "                    </div>\n" +
+                                            "                    <div class=\"am-u-md-3\">\n" +
+                                            "                        <div class=\"features_item\">\n" +
+                                            "                            <img src=\"images/index/f03.jpg\" alt=\"\">\n" +
+                                            "                            <h3 class=\"features_item--title\">" + movie[i * 4 + 2].name + "</h3>\n" +
+                                            "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4 + 2].rating + "</h3>" +
+                                            "                            <p class=\"features_item--text\">\n" +
+                                            "                                " + movie[i * 4 + 2].description + "\n" +
+                                            "                        </div>\n" +
+                                            "                    </div>\n" +
+                                            "                    <div class=\"am-u-md-3\">\n" +
+                                            "                        <div class=\"features_item\">\n" +
+                                            "                            <img src=\"images/index/f04.jpg\" alt=\"\">\n" +
+                                            "                            <h3 class=\"features_item--title\">" + movie[i * 4 + 3].name + "</h3>\n" +
+                                            "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4 + 3].rating + "</h3>" +
+                                            "                            <p class=\"features_item--text\">\n" +
+                                            "                                " + movie[i * 4 + 3].description + "\n" +
+                                            "                            </p>\n" +
+                                            "                        </div>\n" +
+                                            "                    </div>\n" +
+                                            "                </div>";
+                                    } else {
+                                        var num = movie - time * 4;
+                                        document.getElementById("movie").innerHTML += "<div class=\"am-g\">";
+                                        for (var j = 0; j < num; j++) {
+                                            document.getElementById("movie").innerHTML += "<div class=\"am-u-md-3\">\n" +
+                                                "                        <div class=\"features_item\">\n" +
+                                                "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
+                                                "                            <h3 class=\"features_item--title\">" + movie[time * 4 + j].name + "</h3>\n" +
+                                                "                            <h3 class=\"features_item--title\">评分 " + movie[time * 4 + j].rating + "</h3>" +
+                                                "                            <p class=\"features_item--text\">\n" +
+                                                "                                " + movie[time * 4 + j].description + "\n" +
+                                                "                            </p>\n" +
+                                                "                        </div>\n" +
+                                                "                    </div>";
+                                        }
                                     }
                                 }
                             }
@@ -354,6 +376,7 @@
                         <div class="features_item">
                             <img src="images/index/f01.jpg" alt="">
                             <h3 class="features_item--title">电影1</h3>
+                            <h3 class="features_item--title">评分 0.0</h3>
                             <p class="features_item--text">
                                 用户可快速学习适配开发，通过丰富的组件库完成页面功能的移动化适配。
                             </p>
@@ -363,6 +386,7 @@
                         <div class="features_item">
                             <img src="images/index/f02.jpg" alt="">
                             <h3 class="features_item--title">电影2</h3>
+                            <h3 class="features_item--title">评分 0.0</h3>
                             <p class="features_item--text">
                                 Enterplorer Studio内置丰富的移动组件，大大提升了开发效率。
                             </p>
@@ -372,6 +396,7 @@
                         <div class="features_item">
                             <img src="images/index/f03.jpg" alt="">
                             <h3 class="features_item--title">电影3</h3>
+                            <h3 class="features_item--title">评分 0.0</h3>
                             <p class="features_item--text">
                                 整个适配过程可视化，集成手机模拟器，可以快速的开发调试。
                         </div>
@@ -380,6 +405,7 @@
                         <div class="features_item">
                             <img src="images/index/f04.jpg" alt="">
                             <h3 class="features_item--title">电影4</h3>
+                            <h3 class="features_item--title">评分 0.0</h3>
                             <p class="features_item--text">
                                 无需部署，实时上传实时呈现，复用现有系统流程及数据
                             </p>
@@ -393,35 +419,6 @@
     </div>
 
 </div>
-
-
-<!--===========layout-footer================-->
-<%--<div class="layout-footer">--%>
-    <%--<div class="footer">--%>
-        <%--<div style="background-color:#383d61" class="footer--bg"></div>--%>
-        <%--<div class="footer--inner">--%>
-            <%--<div class="container">--%>
-                <%--<div class="footer_main">--%>
-                    <%--<div class="am-g">--%>
-                        <%--&lt;%&ndash;<div class="am-u-md-3 ">&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;<div class="footer_main--column">&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;<strong class="footer_main--column_title">关于我们</strong>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;<div class="footer_about">&ndash;%&gt;--%>
-                                    <%--&lt;%&ndash;<p class="footer_about--text">&ndash;%&gt;--%>
-                                        <%--&lt;%&ndash;云适配(AllMobilize Inc.) 是全球领先的HTML5企业移动化解决方案供应商，由前微软美国总部IE浏览器核心研发团队成员及移动互联网行业专家在美国西雅图创立.&ndash;%&gt;--%>
-                                    <%--&lt;%&ndash;</p>&ndash;%&gt;--%>
-                                    <%--&lt;%&ndash;<p class="footer_about--text">&ndash;%&gt;--%>
-                                        <%--&lt;%&ndash;云适配跨屏云也成功应用于超过30万家企业网站，包括微软、联想等世界500强企业&ndash;%&gt;--%>
-                                    <%--&lt;%&ndash;</p>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
 
 <script src="js/jquery-2.1.0.js" charset="utf-8"></script>
 <script src="js/amazeui.js" charset="utf-8"></script>
