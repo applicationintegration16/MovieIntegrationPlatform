@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>企业网站模板</title>
+    <title>电影集成平台</title>
     <link rel="stylesheet" href="css/amazeui.css" />
     <link rel="stylesheet" href="css/common.min.css" />
     <link rel="stylesheet" href="css/index.min.css" />
@@ -292,7 +292,7 @@
                                     // alert(movie[t].name);
                                     document.getElementById("movie").innerHTML += "<div class=\"am-u-md-3\">\n" +
                                         "                        <div class=\"features_item\">\n" +
-                                        "                            <img src=" + movie[t].pic_url + " alt=\"\">\n" +
+                                        "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
                                         "                            <h3 class=\"features_item--title\">" + movie[t].name + "</h3>\n" +
                                         "                            <h3 class=\"features_item--title\">评分 " + movie[t].rating + "</h3>" +
                                         "                            <p class=\"features_item--text\">\n" +
@@ -308,7 +308,7 @@
                                         document.getElementById("movie").innerHTML += "<div class=\"am-g\">\n" +
                                             "                    <div class=\"am-u-md-3\">\n" +
                                             "                        <div class=\"features_item\">\n" +
-                                            "                            <img src=" + movie[i * 4].pic_url + " alt=\"\">\n" +
+                                            "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
                                             "                            <h3 class=\"features_item--title\">" + movie[i * 4].name + "</h3>\n" +
                                             "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4].rating + "</h3>" +
                                             "                            <p class=\"features_item--text\">\n" +
@@ -318,7 +318,7 @@
                                             "                    </div>\n" +
                                             "                    <div class=\"am-u-md-3\">\n" +
                                             "                        <div class=\"features_item\">\n" +
-                                            "                            <img src=" + movie[i * 4 + 1].pic_url + " alt=\"\">\n" +
+                                            "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
                                             "                            <h3 class=\"features_item--title\">" + movie[i * 4 + 1].name + "</h3>\n" +
                                             "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4 + 1].rating + "</h3>" +
                                             "                            <p class=\"features_item--text\">\n" +
@@ -328,7 +328,7 @@
                                             "                    </div>\n" +
                                             "                    <div class=\"am-u-md-3\">\n" +
                                             "                        <div class=\"features_item\">\n" +
-                                            "                            <img src=" + movie[i * 4 + 2].pic_url + " alt=\"\">\n" +
+                                            "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
                                             "                            <h3 class=\"features_item--title\">" + movie[i * 4 + 2].name + "</h3>\n" +
                                             "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4 + 2].rating + "</h3>" +
                                             "                            <p class=\"features_item--text\">\n" +
@@ -337,7 +337,7 @@
                                             "                    </div>\n" +
                                             "                    <div class=\"am-u-md-3\">\n" +
                                             "                        <div class=\"features_item\">\n" +
-                                            "                            <img src=" + movie[i * 4 + 3].pic_url + " alt=\"\">\n" +
+                                            "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
                                             "                            <h3 class=\"features_item--title\">" + movie[i * 4 + 3].name + "</h3>\n" +
                                             "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4 + 3].rating + "</h3>" +
                                             "                            <p class=\"features_item--text\">\n" +
@@ -352,7 +352,7 @@
                                         for (var j = 0; j < num; j++) {
                                             document.getElementById("movie").innerHTML += "<div class=\"am-u-md-3\">\n" +
                                                 "                        <div class=\"features_item\">\n" +
-                                                "                            <img src=" + movie[time * 4 + j].pic_url + " alt=\"\">\n" +
+                                                "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
                                                 "                            <h3 class=\"features_item--title\">" + movie[time * 4 + j].name + "</h3>\n" +
                                                 "                            <h3 class=\"features_item--title\">评分 " + movie[time * 4 + j].rating + "</h3>" +
                                                 "                            <p class=\"features_item--text\">\n" +
@@ -371,47 +371,47 @@
 
             <!--index-container start-->
             <div class="index-container" id="movie">
-                <div class="am-g">
-                    <div class="am-u-md-3">
-                        <div class="features_item">
-                            <img src="images/index/f01.jpg" alt="">
-                            <h3 class="features_item--title">电影1</h3>
-                            <h3 class="features_item--title">评分 0.0</h3>
-                            <p class="features_item--text">
-                                用户可快速学习适配开发，通过丰富的组件库完成页面功能的移动化适配。
-                            </p>
-                        </div>
-                    </div>
-                    <div class="am-u-md-3">
-                        <div class="features_item">
-                            <img src="images/index/f02.jpg" alt="">
-                            <h3 class="features_item--title">电影2</h3>
-                            <h3 class="features_item--title">评分 0.0</h3>
-                            <p class="features_item--text">
-                                Enterplorer Studio内置丰富的移动组件，大大提升了开发效率。
-                            </p>
-                        </div>
-                    </div>
-                    <div class="am-u-md-3">
-                        <div class="features_item">
-                            <img src="images/index/f03.jpg" alt="">
-                            <h3 class="features_item--title">电影3</h3>
-                            <h3 class="features_item--title">评分 0.0</h3>
-                            <p class="features_item--text">
-                                整个适配过程可视化，集成手机模拟器，可以快速的开发调试。
-                        </div>
-                    </div>
-                    <div class="am-u-md-3">
-                        <div class="features_item">
-                            <img src="images/index/f04.jpg" alt="">
-                            <h3 class="features_item--title">电影4</h3>
-                            <h3 class="features_item--title">评分 0.0</h3>
-                            <p class="features_item--text">
-                                无需部署，实时上传实时呈现，复用现有系统流程及数据
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <%--<div class="am-g">--%>
+                    <%--<div class="am-u-md-3">--%>
+                        <%--<div class="features_item">--%>
+                            <%--<img src="images/index/f01.jpg" alt="">--%>
+                            <%--<h3 class="features_item--title">电影1</h3>--%>
+                            <%--<h3 class="features_item--title">评分 0.0</h3>--%>
+                            <%--<p class="features_item--text">--%>
+                                <%--用户可快速学习适配开发，通过丰富的组件库完成页面功能的移动化适配。--%>
+                            <%--</p>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="am-u-md-3">--%>
+                        <%--<div class="features_item">--%>
+                            <%--<img src="images/index/f02.jpg" alt="">--%>
+                            <%--<h3 class="features_item--title">电影2</h3>--%>
+                            <%--<h3 class="features_item--title">评分 0.0</h3>--%>
+                            <%--<p class="features_item--text">--%>
+                                <%--Enterplorer Studio内置丰富的移动组件，大大提升了开发效率。--%>
+                            <%--</p>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="am-u-md-3">--%>
+                        <%--<div class="features_item">--%>
+                            <%--<img src="images/index/f03.jpg" alt="">--%>
+                            <%--<h3 class="features_item--title">电影3</h3>--%>
+                            <%--<h3 class="features_item--title">评分 0.0</h3>--%>
+                            <%--<p class="features_item--text">--%>
+                                <%--整个适配过程可视化，集成手机模拟器，可以快速的开发调试。--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="am-u-md-3">--%>
+                        <%--<div class="features_item">--%>
+                            <%--<img src="images/index/f04.jpg" alt="">--%>
+                            <%--<h3 class="features_item--title">电影4</h3>--%>
+                            <%--<h3 class="features_item--title">评分 0.0</h3>--%>
+                            <%--<p class="features_item--text">--%>
+                                <%--无需部署，实时上传实时呈现，复用现有系统流程及数据--%>
+                            <%--</p>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
 
             </div>
             <!--index-container end-->

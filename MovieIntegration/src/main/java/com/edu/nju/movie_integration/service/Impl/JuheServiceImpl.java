@@ -170,7 +170,14 @@ public class JuheServiceImpl implements JuheService{
                     Movie movie = getMovieById(movieId);
                     movies.add(movie);
                 }
+                JSONArray object1 = JSONArray.fromObject(movies);
+                String jsonString = object1.toString();
+                String path = "src/main/java/com/edu/nju/movie_integration/pyImpl/juhe.json";
+                BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+                bw.write(jsonString);
+                bw.close();
                 System.out.println(object.get("result"));
+
             }else{
                 System.out.println(object.get("error_code")+":"+object.get("reason"));
             }
@@ -179,9 +186,9 @@ public class JuheServiceImpl implements JuheService{
         }
         return movies;
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         JuheServiceImpl juheService = new JuheServiceImpl();
-        List<Movie> movies = juheService.getTodayMovie();
+        juheService.getMovies();
 //        List<Movie> movies = getTodayMovie();
 //        for (int i = 0 ; i < movies.size() ; i ++)
 //            System.out.println(movies.get(i).getName());
@@ -225,6 +232,16 @@ public class JuheServiceImpl implements JuheService{
             e.printStackTrace();
         }
         return resultMovie;
+    }
+
+    public List<Movie> getMovies() throws IOException {
+        String path = "src/main/java/com/edu/nju/movie_integration/pyImpl/juhe.json";
+        BufferedReader br = new BufferedReader(new FileReader(path));
+       String jsonString = br.readLine();
+       List<Movie> movies = JSONArray.toList(JSONArray.fromObject(jsonString) , Movie.class);
+       for(Movie movie : movies)
+          System.out.println(movie.getRating());
+       return movies;
     }
 
     /**
