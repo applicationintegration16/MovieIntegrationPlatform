@@ -1,4 +1,5 @@
 import requests
+import os
 from bs4 import BeautifulSoup
 
 from sys import argv
@@ -14,11 +15,12 @@ def get_douban_img(url):
         print('*****2')
         print(soup.select('img')[0])
         pic_str_list = str(soup.select('img')[0]).split('src="')[1].split('" title')
+        print('-----')
         print(pic_str_list[0])
-        file = open('src/main/resources/dataset/tmp.txt', 'w')
+        file = open('src/main/resources/dataset/tmp.txt', 'a+')
         file.write(pic_str_list[0])
+        file.write('\n')
         file.close()
 
-print(argv[1])
 
 get_douban_img(argv[1])

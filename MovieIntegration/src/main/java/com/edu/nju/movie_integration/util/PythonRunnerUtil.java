@@ -1,5 +1,7 @@
 package com.edu.nju.movie_integration.util;
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
@@ -12,7 +14,7 @@ import java.io.InputStreamReader;
  *  PythonRunnerUtil call python implement if necessary
  */
 public class PythonRunnerUtil {
-    private static final String COMMAND = "python";
+    private static final String COMMAND = "python3";
 
     public static void run(String pythonFilePath, String[] params){
         String[] args = new String[2 + params.length];

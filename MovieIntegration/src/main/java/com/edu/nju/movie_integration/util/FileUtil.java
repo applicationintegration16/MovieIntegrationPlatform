@@ -33,18 +33,22 @@ public class FileUtil {
         }
     }
 
-    public static String getUrl() {
+    public static List<String> getUrl() {
         try {
             File file = new File(URL_PATH);
             FileReader reader = new FileReader(file);
             BufferedReader bReader = new BufferedReader(reader);
             List<String> strList = new ArrayList<>();
-            String s = bReader.readLine();
+            String s = "";
+            while ((s = bReader.readLine()) != null) {
+                //System.out.println(s);
+                strList.add(s);
+            }
             bReader.close();
-            return s;
+            return strList;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return "";
+            return new ArrayList<>();
         }
     }
 
@@ -53,5 +57,11 @@ public class FileUtil {
             System.out.println(str);
         }
 
+    }
+
+    public static void deleteTmp() {
+        File file=new File("src/main/resources/dataset/tmp.txt");
+        if(file.exists()&&file.isFile())
+            file.delete();
     }
 }

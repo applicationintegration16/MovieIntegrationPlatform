@@ -35,15 +35,19 @@ public class Json2ObjUtil {
                 double rating = innerJObj.get("average").getAsDouble();
 
                 String altStr = jObj.get("alt").toString();
-                System.out.println("**" + altStr);
+               // System.out.println("**" + altStr);
                 String path = "src/main/java/com/edu/nju/movie_integration/pyImpl/img_thief.py";
                 PythonRunnerUtil.run(path, new String[]{altStr});
-
+                int count = 0;
                 Movie movie = new Movie();
                 movie.setName(name);
                 movie.setRating(rating);
                 System.out.println(FileUtil.getUrl());
-                movie.setPic_url(FileUtil.getUrl());
+                movie.setPic_url(FileUtil.getUrl().get(count));
+                count++;
+
+                System.out.println("MOVIE_URL");
+                System.out.println(movie.getPic_url());
                 movieList.add(movie);
 
             }
