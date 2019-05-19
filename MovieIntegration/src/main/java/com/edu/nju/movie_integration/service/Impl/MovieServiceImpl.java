@@ -49,7 +49,7 @@ public class MovieServiceImpl implements MovieService{
             property.put("name",movie.getName());
             property.put("rating",movie.getRating());
             property.put("pic",movie.getPic_url()==null?"":movie.getPic_url());
-            xmlUtil.addElement(document,movie.getName(),property);
+            xmlUtil.addElement(document,property);
         }
         xmlUtil.writeXml(document,"movie");
     }
