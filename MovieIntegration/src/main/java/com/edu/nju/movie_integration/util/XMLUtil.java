@@ -14,6 +14,8 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @Author: py
@@ -22,6 +24,9 @@ import java.util.Map;
  */
 @Component
 public class XMLUtil {
+
+    private String[] chineseNum={"零","一","二","三","四","五","六","七","八","九"};
+
     // nmdwsm
     public static String getMovieXML(String movieStr) {
         String xml = "";
@@ -59,12 +64,12 @@ public class XMLUtil {
     }
 
     /**
-     * 给Document添加节点
-     * @param name 节点名
-     * @param property 属性集合
+     * 给Document添加电影
+     * @param property 电影属性集合
      */
-    public void addElement(Document document,String name,Map<String,Object> property){
-        Element element=document.createElement(name);
+    public void addElement(Document document,Map<String,Object> property){
+        //Element element=document.createElement(parseXmlName(name));
+        Element element=document.createElement("item");
         for(String key:property.keySet()){
             Element temp=document.createElement(key);
             temp.setTextContent(property.get(key)+"");
@@ -110,6 +115,21 @@ public class XMLUtil {
         }
         XMLSerializer xmlSerializer = new XMLSerializer();
         return xmlSerializer.read(content).toString();
+    }
+
+
+    private String parseXmlName(String name){
+        String regex="[：\"！\\s·()，。、|]";
+        Pattern pattern=Pattern.compile(regex);
+        Matcher matcher=pattern.matcher(name);
+        String result=matcher.replaceAll("");
+        System.out.println("修改以后的名字是"+result);
+        char first=result.charAt(0);
+        int value=first-'0';
+        if(value>=0&&value<=9){
+            result=chineseNum[value]+result.substring(1);
+        }
+        return result;
     }
 
 
