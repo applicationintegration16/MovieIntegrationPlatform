@@ -32,6 +32,11 @@ public class Movie {
      */
     private double remain;
 
+    /**
+     * 图片
+     */
+    private String pic_url;
+
     public int getId() {
         return id;
     }
@@ -86,5 +91,13 @@ public class Movie {
 
     public void setRemain(double remain) {
         this.remain = remain;
+    }
+
+    public String getPic_url() {
+        return pic_url;
+    }
+
+    public void setPic_url(String pic_url) {
+        this.pic_url = pic_url;
     }
 }
