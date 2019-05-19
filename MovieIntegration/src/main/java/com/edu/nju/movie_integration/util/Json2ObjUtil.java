@@ -18,6 +18,7 @@ import java.util.List;
 public class Json2ObjUtil {
     private final static String DOUBAN_DATA_PATH = "src/main/resources/dataset/douban.json";
 
+    private static int count = 0;
     public static List<Movie> listMovieFromDouban() {
         List<Movie> movieList = new ArrayList<>();
         List<String> strList = FileUtil.listDoubanStr();
@@ -38,7 +39,7 @@ public class Json2ObjUtil {
                // System.out.println("**" + altStr);
                 String path = "src/main/java/com/edu/nju/movie_integration/pyImpl/img_thief.py";
                 PythonRunnerUtil.run(path, new String[]{altStr});
-                int count = 0;
+
                 Movie movie = new Movie();
                 movie.setName(name);
                 movie.setRating(rating);
