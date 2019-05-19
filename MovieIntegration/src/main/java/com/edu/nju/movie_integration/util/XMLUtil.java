@@ -2,6 +2,7 @@ package com.edu.nju.movie_integration.util;
 
 import java.util.List;
 import net.sf.json.xml.XMLSerializer;
+import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -19,6 +20,7 @@ import java.util.Map;
  * @Date: 2019-05-12 14:28
  * @Version 1.0
  */
+@Component
 public class XMLUtil {
     // nmdwsm
     public static String getMovieXML(String movieStr) {
@@ -42,12 +44,13 @@ public class XMLUtil {
      * 获取一个XMLDocument对象
      * @return XMLDocument
      */
-    public static Document createXml(){
+    public Document createXml(){
         DocumentBuilderFactory documentBuilderFactory=DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder=documentBuilderFactory.newDocumentBuilder();
             Document document=builder.newDocument();
             document.setXmlStandalone(false);
+            document.appendChild(document.createElement("movie"));
             return document;
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
@@ -60,21 +63,21 @@ public class XMLUtil {
      * @param name 节点名
      * @param property 属性集合
      */
-    public static void addElement(Document document,String name,Map<String,Object> property){
+    public void addElement(Document document,String name,Map<String,Object> property){
         Element element=document.createElement(name);
         for(String key:property.keySet()){
             Element temp=document.createElement(key);
             temp.setTextContent(property.get(key)+"");
             element.appendChild(temp);
         }
-        document.appendChild(element);
+        document.getDocumentElement().appendChild(element);
     }
 
     /**
      * XML写入本地
      * @param name 文件名
      */
-    public static void writeXml(Document document,String name) {
+    public void writeXml(Document document,String name) {
         TransformerFactory factory = TransformerFactory.newInstance();
 
         Transformer transformer = null;
@@ -92,7 +95,7 @@ public class XMLUtil {
      * @param filePath 文件路径
      * @return json字符串
      */
-    public static String xml2json(String filePath) {
+    public String xml2json(String filePath) {
         File file=new File(filePath);
         String content="";
         try {
