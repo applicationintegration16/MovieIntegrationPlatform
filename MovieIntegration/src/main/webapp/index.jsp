@@ -281,7 +281,7 @@
                 function getMovie() {
                     var movie;
                     $.ajax({
-                        url: "/movie",
+                        url: "/Todaymovie",
                         method: "get",
                         async: false,
                         success: function(res) {
@@ -292,7 +292,7 @@
                                     // alert(movie[t].name);
                                     document.getElementById("movie").innerHTML += "<div class=\"am-u-md-3\">\n" +
                                         "                        <div class=\"features_item\">\n" +
-                                        "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
+                                        "                            <img src=" + movie[t].pic_url + " alt=\"\">\n" +
                                         "                            <h3 class=\"features_item--title\">" + movie[t].name + "</h3>\n" +
                                         "                            <h3 class=\"features_item--title\">评分 " + movie[t].rating + "</h3>" +
                                         "                            <p class=\"features_item--text\">\n" +
@@ -308,7 +308,7 @@
                                         document.getElementById("movie").innerHTML += "<div class=\"am-g\">\n" +
                                             "                    <div class=\"am-u-md-3\">\n" +
                                             "                        <div class=\"features_item\">\n" +
-                                            "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
+                                            "                            <img src=" + movie[i * 4].pic_url + " alt=\"\">\n" +
                                             "                            <h3 class=\"features_item--title\">" + movie[i * 4].name + "</h3>\n" +
                                             "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4].rating + "</h3>" +
                                             "                            <p class=\"features_item--text\">\n" +
@@ -318,7 +318,7 @@
                                             "                    </div>\n" +
                                             "                    <div class=\"am-u-md-3\">\n" +
                                             "                        <div class=\"features_item\">\n" +
-                                            "                            <img src=\"images/index/f02.jpg\" alt=\"\">\n" +
+                                            "                            <img src=" + movie[i * 4 + 1].pic_url + " alt=\"\">\n" +
                                             "                            <h3 class=\"features_item--title\">" + movie[i * 4 + 1].name + "</h3>\n" +
                                             "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4 + 1].rating + "</h3>" +
                                             "                            <p class=\"features_item--text\">\n" +
@@ -328,7 +328,7 @@
                                             "                    </div>\n" +
                                             "                    <div class=\"am-u-md-3\">\n" +
                                             "                        <div class=\"features_item\">\n" +
-                                            "                            <img src=\"images/index/f03.jpg\" alt=\"\">\n" +
+                                            "                            <img src=" + movie[i * 4 + 2].pic_url + " alt=\"\">\n" +
                                             "                            <h3 class=\"features_item--title\">" + movie[i * 4 + 2].name + "</h3>\n" +
                                             "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4 + 2].rating + "</h3>" +
                                             "                            <p class=\"features_item--text\">\n" +
@@ -337,7 +337,7 @@
                                             "                    </div>\n" +
                                             "                    <div class=\"am-u-md-3\">\n" +
                                             "                        <div class=\"features_item\">\n" +
-                                            "                            <img src=\"images/index/f04.jpg\" alt=\"\">\n" +
+                                            "                            <img src=" + movie[i * 4 + 3].pic_url + " alt=\"\">\n" +
                                             "                            <h3 class=\"features_item--title\">" + movie[i * 4 + 3].name + "</h3>\n" +
                                             "                            <h3 class=\"features_item--title\">评分 " + movie[i * 4 + 3].rating + "</h3>" +
                                             "                            <p class=\"features_item--text\">\n" +
@@ -352,7 +352,7 @@
                                         for (var j = 0; j < num; j++) {
                                             document.getElementById("movie").innerHTML += "<div class=\"am-u-md-3\">\n" +
                                                 "                        <div class=\"features_item\">\n" +
-                                                "                            <img src=\"images/index/f01.jpg\" alt=\"\">\n" +
+                                                "                            <img src=" + movie[time * 4 + j].pic_url + " alt=\"\">\n" +
                                                 "                            <h3 class=\"features_item--title\">" + movie[time * 4 + j].name + "</h3>\n" +
                                                 "                            <h3 class=\"features_item--title\">评分 " + movie[time * 4 + j].rating + "</h3>" +
                                                 "                            <p class=\"features_item--text\">\n" +
