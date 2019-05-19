@@ -167,12 +167,7 @@ public class JuheServiceImpl implements JuheService{
                 for (int i = 0 ; i < movieResult.size() ; i ++) {
                     JSONObject current = (JSONObject) movieResult.get(i);
                     int movieId = current.getInt("movieId");
-                    String movieName = current.getString("movieName");
-                    String pic_url = current.getString("pic_url");
-                    Movie movie = new Movie();
-                    movie.setId(movieId);
-                    movie.setName(movieName);
-                    movie.setPic_url(pic_url);
+                    Movie movie = getMovieById(movieId);
                     movies.add(movie);
                 }
                 System.out.println(object.get("result"));
@@ -185,6 +180,8 @@ public class JuheServiceImpl implements JuheService{
         return movies;
     }
     public static void main(String[] args) {
+        JuheServiceImpl juheService = new JuheServiceImpl();
+        List<Movie> movies = juheService.getTodayMovie();
 //        List<Movie> movies = getTodayMovie();
 //        for (int i = 0 ; i < movies.size() ; i ++)
 //            System.out.println(movies.get(i).getName());
@@ -193,6 +190,43 @@ public class JuheServiceImpl implements JuheService{
 //             getRequest6();
 
     }
+
+    //8.按影片ID检索影片信息
+    public static Movie getMovieById(int movieId){
+        String result =null;
+        String url ="http://v.juhe.cn/movie/query";//请求接口地址
+        Map params = new HashMap();//请求参数
+        params.put("movieid",movieId);//需要检索的影片id
+        params.put("key",APPKEY);//应用APPKEY(应用详细页查询)
+        params.put("dtype","");//返回数据的格式,xml/json，默认json
+        Movie resultMovie = new Movie();
+        try {
+            result =net(url, params, "GET");
+            JSONObject object = JSONObject.fromObject(result);
+            if(object.getInt("error_code")==0){
+                JSONObject movie = object.getJSONObject("result");
+                int id = movieId;
+                double rating = movie.getDouble("rating");
+                String name = movie.getString("title");
+                String pic_url = movie.getString("poster");
+                String plot = movie.getString("plot_simple");
+                List<String> description = new ArrayList<>();
+                description.add(plot);
+                resultMovie.setId(id);
+                resultMovie.setName(name);
+                resultMovie.setRating(rating);
+                resultMovie.setPic_url(pic_url);
+                resultMovie.setDescription(description);
+                System.out.println(object.get("result"));
+            }else{
+                System.out.println(object.get("error_code")+":"+object.get("reason"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultMovie;
+    }
+
     /**
      *
      * @param strUrl 请求地址
