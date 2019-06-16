@@ -24,7 +24,7 @@ public class AutoReply {
     }
 
 
-    private String normalReply(String question) {
+    public String normalReply(String question) {
         try {
             URL url = new URL(ADDRESS);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

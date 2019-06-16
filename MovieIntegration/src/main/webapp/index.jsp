@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/common.min.css" />
     <link rel="stylesheet" href="css/index.min.css" />
 </head>
-<body>
+
 <body onload="getMovie()">
 <%--<div class="layout">--%>
     <!--===========layout-header================-->
@@ -150,7 +150,7 @@
                                                 本平台是一个电影集成平台，为您提供各大平台的电影数据。
                                             </p>
                                             <div class="slide_simple--buttons">
-                                                <button type="button" class="am-btn am-btn-danger">了解更多</button>
+                                                <button type="button" class="am-btn am-btn-danger" onclick="window.location.href='chat.html'">Chatbot</button>
                                             </div>
                                         </div>
                                     </div>
@@ -427,5 +427,7 @@
 <script src="js/common.js" charset="utf-8"></script>
 </body>
 
+
 </html>
+
 

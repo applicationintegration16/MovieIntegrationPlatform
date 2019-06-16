@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>智能聊天</title>
+    <title>电影集成平台 - Chatbot</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="author" content="https://blog.csdn.net/q475254344">
     <link href="css/chat.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
           crossorigin="anonymous">
 </head>
+<script src="js/jquery-2.1.0.js" charset="utf-8"></script>
 <script>
     document.getElementsByTagName('body').height=window.innerHeight;
 </script>
@@ -45,11 +46,13 @@
             </div>
             <div class="footer">
                 <textarea id="text-msg" maxlength="800" rows="5" cols="40" style="width: 99%; resize: none; border: none; " placeholder="请输入..."></textarea>
-                <button class="sendbtn" id="btn-sendmsg" onclick="sendMsg()">发送</button>
+                <button type="button" class="sendbtn" id="btn-sendmsg" onclick="sendMsg()">发送</button>
             </div>
         </div>
     </div>
 </div>
+
+
 <script type="text/javascript">
     function sendMsg(){
         var msgstr = document.getElementById("text-msg").value;
@@ -64,12 +67,68 @@
             appli.setAttribute("class", "msgright");
             appli.innerHTML = str;
             ul.appendChild(appli);
+
+            //chatbot(msgstr);
+            $.ajax({
+                type: "POST",
+                url: "/reply",
+                data: {question:msgstr},
+                dataType: "text",
+                async: false,
+                success: function(data){
+                    console.log("data:" + data);
+                    if(data.trim() != ""){
+                        var restr = "<img style=\"border-radius: 20px; vertical-align: top;\" src=\"http://placehold.it/40x40\">" +
+                            "<p class=\"msgcard\">" + data + "</p>";
+                        var reappli = document.createElement("li");
+                        reappli.setAttribute("class", "msgleft");
+                        reappli.innerHTML = restr;
+                        ul.appendChild(reappli);
+                    }
+                    else{
+                        console.log("data为空字符串");
+                    }
+                },
+                error: function () {
+                    console.log("fail request");
+                }
+            });
         }
         else{
             document.getElementById("text-msg").value = "";
         }
 
     }
+
+    /*function chatbot(msg_question){
+        //alert("调用chatbot");
+
+        $.ajax({
+            method: "POST",
+            url: "/reply",
+            data: {question:msg_question},
+            dataType: "json",
+            async: false,
+            success: function(data){
+                if(data.trim() != ""){
+                    console.log("re:" + data);
+                    var str = "<img style=\"border-radius: 20px; vertical-align: top;\" src=\"http://placehold.it/40x40\">" +
+                        "<p class=\"msgcard\">" + data + "</p>";
+                    var ul = document.getElementById("ul-msg");
+                    var appli = document.createElement("li");
+                    appli.setAttribute("class", "msgleft");
+                    appli.innerHTML = str;
+                    ul.appendChild(appli);
+                }
+                else{
+                    alert("data为空字符串");
+                }
+            },
+            error: function (e) {
+                console.log("fail request");
+            }
+        });
+    }*/
 </script>
 </body>
 </html>
