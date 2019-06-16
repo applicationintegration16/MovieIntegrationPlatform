@@ -19,7 +19,7 @@ public class BasicController {
     public String getNormalReply(String question){
         System.out.println("BasicController调用reply方法");
         AutoReply autoReply = new AutoReply();
-        String replystr = autoReply.normalReply(question);
+        String replystr = autoReply.getReply(question);
         System.out.println("reply: " + replystr);
         return replystr;
     }

@@ -19,12 +19,47 @@ public class AutoReply {
     private static final String WARNING="错误，请稍后再试";
 
     public String getReply(String question){
+        String movieReply=aboutMovie(question);
+        return movieReply==null?normalReply(question):movieReply;
+    }
 
-        return null;
+    private String aboutMovie(String question){
+        String result=null;
+
+        String[] khMovie={"流浪地球","后天","星际穿越","2012","雪国列车"};
+        String[] aMovie={"泰坦尼克号","两小无猜","砰然心动","你的名字","罗马假日"};
+        String[] xMovie={"天才枪手","记忆碎片","禁闭岛","致命魔术","调音师"};
+        String[] kMovie={"寂静岭","咒怨","小丑回魂","闪灵","恐怖游轮"};
+        String[] dMovie={"欢乐好声音","寻梦环游记","狮子王","头脑特工队","怪物史莱克"};
+        String[] dzMovie={"叶问","机械师","A计划","战狼2","英伦对决"};
+        String[] fzMovie={"七宗罪","拆弹专家","惊天魔盗团","看不见的客人","唐人街探案1"};
+        String[] xj={"三傻大闹宝莱坞","唐伯虎点秋香","侠盗夫妻","大话西游","人在囧途"};
+        int index= (int) (Math.random()*5);
+        if(question.contains("科幻")){
+            result="如果你想看科幻电影，我推荐你看"+khMovie[index];
+        }else if(question.contains("爱情")){
+            result="爱情电影想看吗？我推荐"+aMovie[index];
+        }else if(question.contains("动作电影")){
+            result="说起动作电影，"+aMovie[index] +"我很喜欢";
+        }else if(question.contains("悬疑")){
+            result="提到悬疑电影，"+xMovie[index] +"令我印象深刻";
+        }else if(question.contains("恐怖")){
+            result=kMovie[index]+"看过吗，给我留下心理阴影的恐怖电影";
+        }else if(question.contains("动画")){
+            result=dMovie[index]+"是很温馨的动画电影，不知道你看过没";
+        }else if(question.contains("犯罪")){
+            result=fzMovie[index]+"，我觉得很经典的犯罪电影";
+        }else if(question.contains("喜剧")){
+            result="说起喜剧，强烈推荐"+xj[index];
+        }else if(question.contains("动作电影")){
+            result=dzMovie[index]+",让人肾上腺素狂飙的动作电影，看过吗";
+        }
+        else return null;
+        return result;
     }
 
 
-    public String normalReply(String question) {
+    private String normalReply(String question) {
         try {
             URL url = new URL(ADDRESS);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
