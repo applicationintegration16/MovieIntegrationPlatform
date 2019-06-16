@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BasicController {
     @RequestMapping("/")
     public String index(){
-        return "index.jsp";
+        return "chat.html";
+        //return "index.jsp";
     }
 }
