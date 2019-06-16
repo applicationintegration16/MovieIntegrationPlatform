@@ -261,7 +261,7 @@ input {
 
     border: none;
 
-    background-color:  #1f94bf;  /*#58D68D*/
+    background-color: #1f94bf;  /*#58D68D*/
 
     color: white;
 
@@ -271,6 +271,9 @@ input {
 
 }
 
+.sendbtn:hover {
+    background-color: #1d8ebf;
+}
 
 .chatcenter {
 

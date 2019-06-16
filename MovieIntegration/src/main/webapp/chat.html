@@ -20,7 +20,7 @@
                 <span style="margin-left: 20px;">Movie Chatbot</span>
             </div>
             <div class="center">
-                <ul>
+                <ul id="ul-msg">
                     <li class="msgleft">
                         <img style="border-radius: 20px; vertical-align: top;" src="http://placehold.it/40x40">
                         <p class="msgcard">Hello!</p>
@@ -44,11 +44,32 @@
                 </ul>
             </div>
             <div class="footer">
-                <textarea maxlength="800" rows="5" cols="40" style="width: 99%; resize: none; border: none; " placeholder="请在此输入要发送的内容..."></textarea>
-                <button class="sendbtn">发送</button>
+                <textarea id="text-msg" maxlength="800" rows="5" cols="40" style="width: 99%; resize: none; border: none; " placeholder="请输入..."></textarea>
+                <button class="sendbtn" id="btn-sendmsg" onclick="sendMsg()">发送</button>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function sendMsg(){
+        var msgstr = document.getElementById("text-msg").value;
+
+        if(msgstr.trim() != ""){
+            var str = "<img style=\"border-radius: 20px; vertical-align: top;\" src=\"http://placehold.it/40x40\">" +
+                "<p class=\"msgcard\">" + msgstr + "</p>";
+            //alert("输入的是" + msgstr);
+            document.getElementById("text-msg").value = "";
+            var ul = document.getElementById("ul-msg");
+            var appli = document.createElement("li");
+            appli.setAttribute("class", "msgright");
+            appli.innerHTML = str;
+            ul.appendChild(appli);
+        }
+        else{
+            document.getElementById("text-msg").value = "";
+        }
+
+    }
+</script>
 </body>
 </html>
