@@ -1,6 +1,7 @@
 package com.edu.nju.movie_integration.ansj.vec;
 
 import com.edu.nju.movie_integration.ansj.vec.util.TokenizerAnalyzerUtils;
+import com.edu.nju.movie_integration.ansj.vec.util.TxtWriter;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,12 +31,18 @@ public class Main {
         vec.loadJavaModel("src/main/java/model.mod");
 
         List<String> wordList = new ArrayList<String>();
-        wordList.add("烂片");
-        wordList.add("幽默");
+        wordList.add("奇异");
+        wordList.add("绯红");
         wordList.add("星");
-        wordList.add("给力");
+        wordList.add("灭");
+        wordList.add("霸");
+        wordList.add("特效");
+        wordList.add("心动");
+        wordList.add("结局");
+//        wordList.add("垃圾");
         for (String word : wordList) {
-            System.out.println(word + "\t" +
+            TxtWriter.writeFile("src/main/java/result.txt" , word + vec.distance(word).toString());
+            System.out.println(word  +
                     vec.distance(word));
         }
     }
